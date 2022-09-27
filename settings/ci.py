@@ -14,15 +14,15 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-FIXTURE_DIRS = [
-      os.path.join(BASE_DIR, 'fixtures'),
-]
+#FIXTURE_DIRS = [
+#      os.path.join(BASE_DIR, 'fixtures'),
+#]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ufru@-exg7ag5-1uc$bb2v+7_05+4csm)y63d*^lio@)p^@io1'
+SECRET_KEY = config("TEST_SECRET_KEY", default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,23 +78,25 @@ WSGI_APPLICATION = 'hackernews.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+TEST_DATABASE = config("TEST_DATABASE", default='')
+TEST_USER = config("TEST_USER", default='')
+TEST_PASSWORD = config("TEST_PASSWORD", default='')
+TEST_HOST = config("TEST_HOST", default='')
+TEST_PORT = config("TEST_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hackernews',
-        'USER': 'postgres',
-        'PASSWORD': 'alasdeangel',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+        'NAME': TEST_DATABASE,
+        'USER': TEST_USER,
+        'PASSWORD': TEST_PASSWORD,
+        'HOST': TEST_HOST,
+        'PORT': TEST_PORT,
+        'TEST': {
+            'NAME': TEST_DATABASE,
+        },
+    },
 }
 
-AUTHENTICATION_BACKENDS = [
-    'graphql_jwt.backends.JSONWebTokenBackend',
-    'django.contrib.auth.backends.ModelBackend',
-]
-
-CORS_ORIGIN_ALLOW_ALL = True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -142,3 +143,7 @@ GRAPHENE = {
     ],
 }
 
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
