@@ -78,7 +78,6 @@ WSGI_APPLICATION = 'hackernews.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 TEST_DATABASE = config("TEST_DATABASE", default='')
 TEST_USER = config("TEST_USER", default='')
 TEST_PASSWORD = config("TEST_PASSWORD", default='')
