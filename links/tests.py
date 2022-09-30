@@ -57,4 +57,4 @@ class LinkTestCase(GraphQLTestCase):
         content = json.loads(response.content)
         print(content)
         self.assertResponseNoErrors(response)
-        self.assertDictEqual({"createLink": {"description": "google"}}, content['data']) 
+        self.assertDictEqual({"createLink": {"description": "google"}}, content['data'])
