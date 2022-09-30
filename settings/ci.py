@@ -147,4 +147,7 @@ AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9bd97462027e4af84d645767dbe10102ce28abc3
