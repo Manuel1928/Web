@@ -6,7 +6,7 @@ metadata:
     app: postgres
 data:
   DEV_SECRET_KEY = I-LOVE-SOFTWARE
-  DEV_DATABASE =tpclniov
+  DEV_DATABASE = tpclniov
   DEV_USER = tpclniov
   DEV_PASSWORD = SLHqSO0yxZGWiJLPur-KALyhig1nbmYI
   DEV_HOST = jelani.db.elephantsql.com
