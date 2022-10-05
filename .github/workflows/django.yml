@@ -42,18 +42,18 @@ jobs:
    # - name: Run Tests
    #   run: |
    #     python manage.py test --settings=settings.ci -v 3 --keepdb
-   step:
-    
+   setup:
+
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/ckeckout@v1
+    - uses: actions/checkout@v1
     - uses: okteto/context@2.7.0
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
-        
+
     - name: Deploy
       uses: okteto/pipeline@2.7.0
-      with: 
+      with:
          name: hackernews-graphql
-         time: 5m
+         timeout: 5m
