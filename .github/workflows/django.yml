@@ -55,5 +55,5 @@ jobs:
     - name: Deploy
       uses: okteto/pipeline@2.7.0
       with:
-         name: Web
+         name: web
          timeout: 5m
