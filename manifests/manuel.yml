@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Manuel1928
+  name: manuel1928
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Manuel1928
+      app: manuel1928
   template:
     metadata:
       labels:
-        app: Manuel1928
+        app: manuel1928
     spec:
       containers:
-      - image: okteto.dev/:latest
-        name: Manuel1928
+      - image: okteto.dev/manuel1928:latest
+        name: manuel1928
         envFrom:
         - configMapRef:
-            name: Manuel1928-config
+            name: manuel1928-config
         livenessProbe:
           httpGet:
             path: /ht/
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: Manuel1928
+  name: manuel1928
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP  
   ports:
-  - name: "Manuel1928"
+  - name: "manuel1928"
     port: 8080
   selector:
-    app: Manuel1928
+    app: manuel1928
