@@ -1,0 +1,12 @@
+build:
+  manuel1928:
+    image: okteto.dev/manuel1928:latest
+
+deploy:
+  - okteto build # build the image with the latest code
+  - kubectl apply -f manifests # create all the resources in kubernetes
+dev:
+  manuel1928:
+    command: bash
+    sync:
+    - .:/hackernews
